@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33815.320
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SDLPixelProject", "SDLPixelProject\SDLPixelProject.vcxproj", "{2CE67A1C-C175-4CCA-818C-5279C83A61EA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2CE67A1C-C175-4CCA-818C-5279C83A61EA}.Debug|x64.ActiveCfg = Debug|x64
+		{2CE67A1C-C175-4CCA-818C-5279C83A61EA}.Debug|x64.Build.0 = Debug|x64
+		{2CE67A1C-C175-4CCA-818C-5279C83A61EA}.Debug|x86.ActiveCfg = Debug|Win32
+		{2CE67A1C-C175-4CCA-818C-5279C83A61EA}.Debug|x86.Build.0 = Debug|Win32
+		{2CE67A1C-C175-4CCA-818C-5279C83A61EA}.Release|x64.ActiveCfg = Release|x64
+		{2CE67A1C-C175-4CCA-818C-5279C83A61EA}.Release|x64.Build.0 = Release|x64
+		{2CE67A1C-C175-4CCA-818C-5279C83A61EA}.Release|x86.ActiveCfg = Release|Win32
+		{2CE67A1C-C175-4CCA-818C-5279C83A61EA}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AE7285EA-AD32-4A12-8974-BF6FF1624D37}
+	EndGlobalSection
+EndGlobal
