@@ -1,6 +1,7 @@
-C:\Users\arreh\source\repos\SDLPixelProject\SDLPixelProject\Components.cpp;C:\Users\arreh\source\repos\SDLPixelProject\SDLPixelProject\x64\Debug\Components.obj
+C:\Users\arreh\source\repos\SDLPixelProject\SDLPixelProject\Collision.cpp;C:\Users\arreh\source\repos\SDLPixelProject\SDLPixelProject\x64\Debug\Collision.obj
 C:\Users\arreh\source\repos\SDLPixelProject\SDLPixelProject\Game.cpp;C:\Users\arreh\source\repos\SDLPixelProject\SDLPixelProject\x64\Debug\Game.obj
 C:\Users\arreh\source\repos\SDLPixelProject\SDLPixelProject\GameObject.cpp;C:\Users\arreh\source\repos\SDLPixelProject\SDLPixelProject\x64\Debug\GameObject.obj
 C:\Users\arreh\source\repos\SDLPixelProject\SDLPixelProject\main.cpp;C:\Users\arreh\source\repos\SDLPixelProject\SDLPixelProject\x64\Debug\main.obj
 C:\Users\arreh\source\repos\SDLPixelProject\SDLPixelProject\Map.cpp;C:\Users\arreh\source\repos\SDLPixelProject\SDLPixelProject\x64\Debug\Map.obj
 C:\Users\arreh\source\repos\SDLPixelProject\SDLPixelProject\TextureManager.cpp;C:\Users\arreh\source\repos\SDLPixelProject\SDLPixelProject\x64\Debug\TextureManager.obj
+C:\Users\arreh\source\repos\SDLPixelProject\SDLPixelProject\Vector2D.cpp;C:\Users\arreh\source\repos\SDLPixelProject\SDLPixelProject\x64\Debug\Vector2D.obj

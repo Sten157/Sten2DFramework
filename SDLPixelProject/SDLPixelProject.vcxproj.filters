@@ -29,6 +29,12 @@
     <ClCompile Include="Map.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Vector2D.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Collision.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -43,17 +49,22 @@
     <ClInclude Include="Map.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="Components.h">
+    <ClInclude Include="ECS\Components.h">
       <Filter>Source Files\ECS</Filter>
     </ClInclude>
-    <ClInclude Include="EntityComponentSystem.h">
+    <ClInclude Include="ECS\EntityComponentSystem.h">
       <Filter>Source Files\ECS</Filter>
     </ClInclude>
-    <ClInclude Include="PositionComponent.h">
+    <ClInclude Include="ECS\TransformComponent.h">
       <Filter>Source Files\ECS</Filter>
     </ClInclude>
-    <ClInclude Include="SpriteComponent.h">
+    <ClInclude Include="ECS\SpriteComponent.h">
       <Filter>Source Files\ECS</Filter>
     </ClInclude>
+    <ClInclude Include="Vector2D.h" />
+    <ClInclude Include="ECS\KeyboardController.h" />
+    <ClInclude Include="ECS\CollisionComponent.h" />
+    <ClInclude Include="Collision.h" />
+    <ClInclude Include="ECS\TileComponent.h" />
   </ItemGroup>
 </Project>

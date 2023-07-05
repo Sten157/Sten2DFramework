@@ -2,18 +2,28 @@
 #include "TextureManager.h"
 #include "Map.h"
 #include "ECS/Components.h"
+#include "Vector2D.h"
+#include "Collision.h"
 
 Map* map;
 
 SDL_Renderer* Game::pRenderer = nullptr;
 
 Manager manager;
-auto& newPlayer(manager.AddEntity());
+SDL_Event Game::event;
+
+std::vector<CollisionComponent*> Game::colliders;
+
+auto& player(manager.AddEntity());
+auto& wall(manager.AddEntity());
+
+auto& tile0(manager.AddEntity());
+auto& tile1(manager.AddEntity());
+auto& tile2(manager.AddEntity());
 
 Game::Game()
 {
-	//https://www.youtube.com/watch?v=jq3Bg7XXjWw&list=PLhfAbcv9cehhkG7ZQK0nfIGJC_C-wSLrx&index=10
-	// 2:47
+
 }
 
 Game::~Game()
@@ -51,17 +61,26 @@ void Game::Init(const char* title, int xpos, int ypos, int width, int height, bo
 		isRunning = false;
 	}
 
-	player = new GameObject("assets/player.png", 0, 0);
-	enemy = new GameObject("assets/enemy.png", 50, 0);
+
 	map = new Map();
 	
-	newPlayer.AddComponent<PositionComponent>();
-	newPlayer.GetComponent<PositionComponent>().setPos(500,500);
+	tile0.AddComponent<TileComponent>(200, 200, 16, 16, 0);
+	tile1.AddComponent<TileComponent>(250, 250, 16, 16, 1);
+	tile2.AddComponent<TileComponent>(150, 150, 16, 16, 2);
+	tile2.AddComponent<CollisionComponent>("wall");
+
+	player.AddComponent<TransformComponent>(2);
+	player.AddComponent<SpriteComponent>("assets/player.png");
+	player.AddComponent<KeyboardController>();
+	player.AddComponent<CollisionComponent>("player");
+
+	wall.AddComponent<TransformComponent>(300.0f, 300.0f, 300, 20, 1);
+	wall.AddComponent<SpriteComponent>("assets/wall.png");
+	wall.AddComponent<CollisionComponent>("wall");
 }
 
 void Game::EventHandler()
 {
-	SDL_Event event;
 	SDL_PollEvent(&event);
 
 	switch (event.type)
@@ -76,21 +95,25 @@ void Game::EventHandler()
 
 void Game::Update()
 {
-	counter++;
-	player->Update();
-	enemy->Update();
+	manager.Refresh();
 	manager.Update();
-	std::cout << " " << newPlayer.GetComponent<PositionComponent>().x() << "," << newPlayer.GetComponent<PositionComponent>().y() << std::endl;
-	std::cout << counter << "\r";
+
+	for (auto cc : colliders)
+	{
+		Collision::AABB(player.GetComponent<CollisionComponent>(), *cc);
+		//if (Collision::AABB(player.GetComponent<CollisionComponent>(), *cc)) 
+		//{
+		//	player.GetComponent<TransformComponent>().velocity * -1;
+		//}
+	}
 }
 
 void Game::Render()
 {
 	SDL_RenderClear(pRenderer);
 
-	map->DrawMap();
-	player->Render();
-	enemy->Render();
+	//map->DrawMap();
+	manager.Draw();
 
 	SDL_RenderPresent(pRenderer);
 }

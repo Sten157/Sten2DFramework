@@ -1,3 +1,9 @@
 ﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(531,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (SDLPixelProject.vcxproj).  This can lead to incorrect clean and rebuild behavior.
   Game.cpp
+C:\Users\arreh\source\repos\SDLPixelProject\SDLPixelProject\ECS\EntityComponentSystem.h(65,33): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\arreh\source\repos\SDLPixelProject\SDLPixelProject\ECS\TileComponent.h(50,9): message : see reference to function template instantiation 'T &Entity::AddComponent<TransformComponent,int&,int&,int&,int&,int>(int &,int &,int &,int &,int &&)' being compiled
+          with
+          [
+              T=TransformComponent
+          ]
   SDLPixelProject.vcxproj -> C:\Users\arreh\source\repos\SDLPixelProject\x64\Debug\StenEngine.exe
