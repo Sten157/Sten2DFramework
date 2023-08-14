@@ -14,7 +14,6 @@ public:
 	int tileID;
 	
 	char path[32];
-	//char* path;
 
 	TileComponent() = default;
 
@@ -29,16 +28,13 @@ public:
 		switch (tileID)
 		{
 		case 0:
-			snprintf(path, 32, "assets/ground.png");
-			//path = "assets/ground.png";
+			snprintf(path, 32, "assets/water.png");
 			break;
 		case 1:
-			snprintf(path, 32, "assets/water.png");
-			//path = "assets/water.png";
+			snprintf(path, 32, "assets/wall.png");
 			break;
 		case 2:
-			snprintf(path, 32, "assets/wall.png");
-			//path = "assets/wall.png";
+			snprintf(path, 32, "assets/ground.png");
 			break;
 		default:
 			break;

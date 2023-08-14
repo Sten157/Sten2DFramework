@@ -17,10 +17,6 @@ std::vector<CollisionComponent*> Game::colliders;
 auto& player(manager.AddEntity());
 auto& wall(manager.AddEntity());
 
-auto& tile0(manager.AddEntity());
-auto& tile1(manager.AddEntity());
-auto& tile2(manager.AddEntity());
-
 Game::Game()
 {
 
@@ -63,11 +59,8 @@ void Game::Init(const char* title, int xpos, int ypos, int width, int height, bo
 
 
 	map = new Map();
-	
-	tile0.AddComponent<TileComponent>(200, 200, 16, 16, 0);
-	tile1.AddComponent<TileComponent>(250, 250, 16, 16, 1);
-	tile2.AddComponent<TileComponent>(150, 150, 16, 16, 2);
-	tile2.AddComponent<CollisionComponent>("wall");
+
+	Map::LoadMap("assets/map.c", 32, 32);
 
 	player.AddComponent<TransformComponent>(2);
 	player.AddComponent<SpriteComponent>("assets/player.png");
@@ -101,10 +94,6 @@ void Game::Update()
 	for (auto cc : colliders)
 	{
 		Collision::AABB(player.GetComponent<CollisionComponent>(), *cc);
-		//if (Collision::AABB(player.GetComponent<CollisionComponent>(), *cc)) 
-		//{
-		//	player.GetComponent<TransformComponent>().velocity * -1;
-		//}
 	}
 }
 
@@ -112,7 +101,6 @@ void Game::Render()
 {
 	SDL_RenderClear(pRenderer);
 
-	//map->DrawMap();
 	manager.Draw();
 
 	SDL_RenderPresent(pRenderer);
@@ -124,4 +112,10 @@ void Game::Clean()
 	SDL_DestroyRenderer(pRenderer);
 	SDL_Quit();
 	std::cout << "Game Quit!" << std::endl;
+}
+
+void Game::AddTile(int id, int x, int y) 
+{
+	auto& tile(manager.AddEntity());
+	tile.AddComponent<TileComponent>(x, y, 32, 32, id);
 }
