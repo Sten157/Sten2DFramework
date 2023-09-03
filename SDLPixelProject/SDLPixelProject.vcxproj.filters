@@ -35,6 +35,9 @@
     <ClCompile Include="Collision.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ECS\EntityComponentSystem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -66,5 +69,6 @@
     <ClInclude Include="ECS\CollisionComponent.h" />
     <ClInclude Include="Collision.h" />
     <ClInclude Include="ECS\TileComponent.h" />
+    <ClInclude Include="ECS\Animation.h" />
   </ItemGroup>
 </Project>

@@ -36,6 +36,9 @@ public:
 		case 2:
 			snprintf(path, 32, "assets/ground.png");
 			break;
+		case 3:
+			snprintf(path, 32, "assets/grass.png");
+			break;
 		default:
 			break;
 		}
