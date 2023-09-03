@@ -55,25 +55,26 @@ public:
 			{
 			case SDLK_w:
 				transform->velocity.y = 0;
-				sprite->Play("Idle");
 				break;
 
 			case SDLK_s:
 				transform->velocity.y = 0;
-				sprite->Play("Idle");
 				break;
 
 			case SDLK_a:
 				transform->velocity.x = 0;
-				sprite->Play("Idle");
 				break;
 			case SDLK_d:
 				transform->velocity.x = 0;
-				sprite->Play("Idle");
 				break;
 			default:
 				break;
 			}
+		}
+
+		if (transform->velocity.x == 0 && transform->velocity.y == 0) 
+		{
+			sprite->Play("Idle");
 		}
 	}
 };
