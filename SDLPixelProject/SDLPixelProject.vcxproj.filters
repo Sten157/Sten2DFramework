@@ -14,62 +14,66 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game.cpp">
+    <ClCompile Include="src\Game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TextureManager.cpp">
+    <ClCompile Include="src\TextureManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GameObject.cpp">
+    <ClCompile Include="src\GameObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Map.cpp">
+    <ClCompile Include="src\Map.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Vector2D.cpp">
+    <ClCompile Include="src\Vector2D.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Collision.cpp">
+    <ClCompile Include="src\Collision.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ECS\EntityComponentSystem.cpp">
+    <ClCompile Include="src\ECS\EntityComponentSystem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\AssetManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Game.h">
+    <ClInclude Include="src\Game.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="TextureManager.h">
+    <ClInclude Include="src\TextureManager.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="GameObject.h">
+    <ClInclude Include="src\GameObject.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="Map.h">
+    <ClInclude Include="src\Map.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="ECS\Components.h">
+    <ClInclude Include="src\ECS\Components.h">
       <Filter>Source Files\ECS</Filter>
     </ClInclude>
-    <ClInclude Include="ECS\EntityComponentSystem.h">
+    <ClInclude Include="src\ECS\EntityComponentSystem.h">
       <Filter>Source Files\ECS</Filter>
     </ClInclude>
-    <ClInclude Include="ECS\TransformComponent.h">
+    <ClInclude Include="src\ECS\TransformComponent.h">
       <Filter>Source Files\ECS</Filter>
     </ClInclude>
-    <ClInclude Include="ECS\SpriteComponent.h">
+    <ClInclude Include="src\ECS\SpriteComponent.h">
       <Filter>Source Files\ECS</Filter>
     </ClInclude>
-    <ClInclude Include="Vector2D.h" />
-    <ClInclude Include="ECS\KeyboardController.h" />
-    <ClInclude Include="ECS\CollisionComponent.h" />
-    <ClInclude Include="Collision.h" />
-    <ClInclude Include="ECS\TileComponent.h" />
-    <ClInclude Include="ECS\Animation.h" />
+    <ClInclude Include="src\Vector2D.h" />
+    <ClInclude Include="src\ECS\KeyboardController.h" />
+    <ClInclude Include="src\ECS\CollisionComponent.h" />
+    <ClInclude Include="src\Collision.h" />
+    <ClInclude Include="src\ECS\TileComponent.h" />
+    <ClInclude Include="src\ECS\Animation.h" />
+    <ClInclude Include="src\AssetManager.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="assets\map.map" />
