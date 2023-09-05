@@ -14,8 +14,12 @@ SDL_Event Game::event;
 
 std::vector<CollisionComponent*> Game::colliders;
 
+bool Game::isRunning = false;
+
 auto& player(manager.AddEntity());
 auto& wall(manager.AddEntity());
+
+const char* mapPath = "assets/game_ss.png";
 
 enum groupLabels : std::size_t 
 {
@@ -24,6 +28,10 @@ enum groupLabels : std::size_t
 	groupEnemies,
 	groupColliders
 };
+
+auto& tiles(manager.getGroup(groupMap));
+auto& players(manager.getGroup(groupPlayers));
+auto& enemies(manager.getGroup(groupEnemies));
 
 Game::Game()
 {
@@ -68,7 +76,7 @@ void Game::Init(const char* title, int xpos, int ypos, int width, int height, bo
 
 	map = new Map();
 
-	Map::LoadMap("assets/map.c", 32, 32);
+	Map::LoadMap("assets/map.map", 33, 33, 64);
 
 	player.AddComponent<TransformComponent>(2);
 	player.GetComponent<TransformComponent>().height = 16;
@@ -77,11 +85,6 @@ void Game::Init(const char* title, int xpos, int ypos, int width, int height, bo
 	player.AddComponent<KeyboardController>();
 	player.AddComponent<CollisionComponent>("player");
 	player.addGroup(groupPlayers);
-
-	//wall.AddComponent<TransformComponent>(300.0f, 300.0f, 300, 20, 1);
-	//wall.AddComponent<SpriteComponent>("assets/wall.png");
-	//wall.AddComponent<CollisionComponent>("wall");
-	//wall.addGroup(groupMap);
 }
 
 void Game::EventHandler()
@@ -103,15 +106,15 @@ void Game::Update()
 	manager.Refresh();
 	manager.Update();
 
-	for (auto cc : colliders)
+	Vector2D playerVel = player.GetComponent<TransformComponent>().velocity;
+	int playerSpeed = player.GetComponent<TransformComponent>().speed;
+
+	for (auto tile : tiles)
 	{
-		Collision::AABB(player.GetComponent<CollisionComponent>(), *cc);
+		tile->GetComponent<TileComponent>().destRect.x += -(playerVel.x * playerSpeed);
+		tile->GetComponent<TileComponent>().destRect.y += -(playerVel.y * playerSpeed);
 	}
 }
-
-auto& tiles(manager.getGroup(groupMap));
-auto& players(manager.getGroup(groupPlayers));
-auto& enemies(manager.getGroup(groupEnemies));
 
 void Game::Render()
 {
@@ -143,9 +146,9 @@ void Game::Clean()
 	std::cout << "Game Quit!" << std::endl;
 }
 
-void Game::AddTile(int id, int x, int y) 
+void Game::AddTile(int srcX, int srcY, int xPos, int yPos)
 {
 	auto& tile(manager.AddEntity());
-	tile.AddComponent<TileComponent>(x, y, 32, 32, id);
+	tile.AddComponent<TileComponent>(srcX, srcY, xPos, yPos, mapPath);
 	tile.addGroup(groupMap);
 }

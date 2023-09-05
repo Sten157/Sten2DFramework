@@ -41,9 +41,6 @@ public:
 				sprite->spriteFlipFlag = SDL_FLIP_NONE;
 				sprite->Play("Walk");
 				break;
-			case SDLK_ESCAPE:
-				Game::event.type = SDL_QUIT;
-				break;
 			default:
 				break;
 			}
@@ -66,6 +63,9 @@ public:
 				break;
 			case SDLK_d:
 				transform->velocity.x = 0;
+				break;
+			case SDLK_ESCAPE:
+				Game::isRunning = false;
 				break;
 			default:
 				break;
