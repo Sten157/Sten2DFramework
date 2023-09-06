@@ -153,6 +153,7 @@
     <ClInclude Include="src\ECS\Components.h" />
     <ClInclude Include="src\ECS\EntityComponentSystem.h" />
     <ClInclude Include="src\ECS\KeyboardController.h" />
+    <ClInclude Include="src\ECS\ProjectileComponent.h" />
     <ClInclude Include="src\ECS\TileComponent.h" />
     <ClInclude Include="src\Game.h" />
     <ClInclude Include="src\GameObject.h" />

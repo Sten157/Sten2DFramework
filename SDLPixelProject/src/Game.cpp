@@ -6,6 +6,7 @@
 #include "Collision.h"
 #include "AssetManager.h"
 
+
 Map* map;
 
 SDL_Renderer* Game::pRenderer = nullptr;
@@ -63,6 +64,7 @@ void Game::Init(const char* title, int xpos, int ypos, int width, int height, bo
 
 	assets->AddTexture("terrain", "assets/game_ss.png");
 	assets->AddTexture("player", "assets/player_anim.png");
+	assets->AddTexture("projectile", "assets/projectile_ss.png");
 
 	map = new Map("terrain", 2, 32);
 
@@ -75,11 +77,18 @@ void Game::Init(const char* title, int xpos, int ypos, int width, int height, bo
 	player.AddComponent<KeyboardController>();
 	player.AddComponent<CollisionComponent>("player");
 	player.addGroup(groupPlayers);
+
+	assets->CreateProjectile(Vector2D(600, 600), Vector2D(2, 0), 200, 2, "projectile");
+	assets->CreateProjectile(Vector2D(500, 600), Vector2D(-1, 0), 200, 2, "projectile");
+	assets->CreateProjectile(Vector2D(400, 600), Vector2D(1, 0), 200, 2, "projectile");
+	assets->CreateProjectile(Vector2D(300, 600), Vector2D(2, 0), 200, 2, "projectile");
+	assets->CreateProjectile(Vector2D(300, 500), Vector2D(0, -2), 200, 2, "projectile");
 }
 
 auto& tiles(manager.getGroup(Game::groupMap));
 auto& players(manager.getGroup(Game::groupPlayers));
 auto& colliders(manager.getGroup(Game::groupColliders));
+auto& projectiles(manager.getGroup(Game::groupProjectiles));
 
 void Game::EventHandler()
 {
@@ -113,6 +122,15 @@ void Game::Update()
 		}
 	}
 
+	for (auto& p : projectiles) 
+	{
+		if (Collision::AABB(playerCol, p->GetComponent<CollisionComponent>().collider)) 
+		{
+			std::cout << "collided with player" << std::endl;
+			p->Destroy();
+		}
+	}
+
 	camera.x = player.GetComponent<TransformComponent>().position.x - 1024 / 2;
 	camera.y = player.GetComponent<TransformComponent>().position.y - 1024 / 2;
 
@@ -136,6 +154,11 @@ void Game::Render()
 	}
 
 	for (auto& p : players)
+	{
+		p->Draw();
+	}
+
+	for (auto& p : projectiles)
 	{
 		p->Draw();
 	}

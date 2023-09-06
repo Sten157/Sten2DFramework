@@ -31,7 +31,8 @@ public:
 	{
 		groupMap,
 		groupPlayers,
-		groupColliders
+		groupColliders,
+		groupProjectiles
 	};
 
 private:

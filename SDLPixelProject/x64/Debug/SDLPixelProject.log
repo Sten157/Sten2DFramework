@@ -1,9 +1,9 @@
 ﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(531,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (SDLPixelProject.vcxproj).  This can lead to incorrect clean and rebuild behavior.
   Game.cpp
+C:\Users\arreh\source\repos\SDLPixelProject\SDLPixelProject\src\ECS\TileComponent.h(26,16): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
 C:\Users\arreh\source\repos\SDLPixelProject\SDLPixelProject\src\ECS\TileComponent.h(27,16): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\arreh\source\repos\SDLPixelProject\SDLPixelProject\src\ECS\TileComponent.h(28,16): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\arreh\source\repos\SDLPixelProject\SDLPixelProject\src\ECS\TileComponent.h(40,27): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
 C:\Users\arreh\source\repos\SDLPixelProject\SDLPixelProject\src\ECS\TileComponent.h(41,27): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\arreh\source\repos\SDLPixelProject\SDLPixelProject\src\ECS\TileComponent.h(42,27): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\arreh\source\repos\SDLPixelProject\SDLPixelProject\src\Game.cpp(116,66): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\arreh\source\repos\SDLPixelProject\SDLPixelProject\src\Game.cpp(117,66): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\arreh\source\repos\SDLPixelProject\SDLPixelProject\src\Game.cpp(134,66): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\arreh\source\repos\SDLPixelProject\SDLPixelProject\src\Game.cpp(135,66): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
   SDLPixelProject.vcxproj -> C:\Users\arreh\source\repos\SDLPixelProject\x64\Debug\StenEngine.exe

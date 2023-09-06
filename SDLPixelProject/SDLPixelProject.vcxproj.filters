@@ -74,6 +74,7 @@
     <ClInclude Include="src\ECS\TileComponent.h" />
     <ClInclude Include="src\ECS\Animation.h" />
     <ClInclude Include="src\AssetManager.h" />
+    <ClInclude Include="src\ECS\ProjectileComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="assets\map.map" />

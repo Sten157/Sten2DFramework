@@ -9,7 +9,7 @@
 class SpriteComponent : public Component
 {
 public:
-
+	
 	int animationIndex = 0;
 	std::map<const char*, Animation> animations;
 
