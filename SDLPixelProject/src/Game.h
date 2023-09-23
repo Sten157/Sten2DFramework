@@ -24,6 +24,7 @@ public:
 	static SDL_Renderer* pRenderer;
 	static SDL_Event event;
 	static bool isRunning;
+	static bool isFullScreen;
 	static SDL_Rect camera;
 	static AssetManager* assets;
 

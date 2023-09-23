@@ -5,7 +5,7 @@
 #include "Vector2D.h"
 #include "Collision.h"
 #include "AssetManager.h"
-
+#include <sstream>
 
 Map* map;
 
@@ -19,8 +19,15 @@ SDL_Rect Game::camera = { 0,0,1300,1400 };
 AssetManager* Game::assets = new AssetManager(&manager);
 
 bool Game::isRunning = false;
+bool Game::isFullScreen = false;
 
 auto& player(manager.AddEntity());
+
+// Labels currently cause memory leaks of ~3 MB/s
+// Need to redo UILabel class
+
+//auto& playerPosLabel(manager.AddEntity());
+//auto& cameraLabel(manager.AddEntity());
 
 Game::Game()
 {
@@ -36,7 +43,7 @@ void Game::Init(const char* title, int xpos, int ypos, int width, int height, bo
 {
 	int flags = 0;
 
-	if (fullScreen == true)
+	if (isFullScreen == true)
 		flags = SDL_WINDOW_FULLSCREEN;
 
 	if (SDL_Init(SDL_INIT_EVERYTHING) == 0) 
@@ -61,10 +68,17 @@ void Game::Init(const char* title, int xpos, int ypos, int width, int height, bo
 	{
 		isRunning = false;
 	}
+	
+	if (TTF_Init() == -1) 
+	{
+		std::cout << "Error : SDL_TTF failed to init" << std::endl;
+	}
 
 	assets->AddTexture("terrain", "assets/game_ss.png");
 	assets->AddTexture("player", "assets/player_anim.png");
 	assets->AddTexture("projectile", "assets/projectile_ss.png");
+
+	assets->AddFont("gameFont", "assets/font.ttf", 16);
 
 	map = new Map("terrain", 2, 32);
 
@@ -77,6 +91,11 @@ void Game::Init(const char* title, int xpos, int ypos, int width, int height, bo
 	player.AddComponent<KeyboardController>();
 	player.AddComponent<CollisionComponent>("player");
 	player.addGroup(groupPlayers);
+
+	SDL_Color color = { 255, 255, 255 };
+	//font size is 15 pixels
+	//playerPosLabel.AddComponent<UILabel>(10, 10, "Test String", "gameFont", color);
+	//cameraLabel.AddComponent<UILabel>(10, 25, "Test String", "gameFont", color);
 
 	assets->CreateProjectile(Vector2D(600, 600), Vector2D(2, 0), 200, 2, "projectile");
 	assets->CreateProjectile(Vector2D(500, 600), Vector2D(-1, 0), 200, 2, "projectile");
@@ -106,9 +125,25 @@ void Game::EventHandler()
 
 void Game::Update()
 {
+	if (isFullScreen == true) 
+	{
+		SDL_SetWindowFullscreen(pWindow, SDL_WINDOW_FULLSCREEN);
+	}
+	else
+	{
+		SDL_SetWindowFullscreen(pWindow, SDL_WINDOW_BORDERLESS);
+	}
 
 	SDL_Rect playerCol = player.GetComponent<CollisionComponent>().collider;
 	Vector2D playerPos = player.GetComponent<TransformComponent>().position;
+
+	//std::stringstream sStream;
+	//std::stringstream sStream1;
+	//sStream << "Player position: " << playerPos;
+	//playerPosLabel.GetComponent<UILabel>().SetLabelText(sStream.str(), "gameFont");
+	
+	//sStream1 << "Camera X: " << camera.x << "Camera Y: " << camera.y;
+	//cameraLabel.GetComponent<UILabel>().SetLabelText(sStream1.str(), "gameFont");
 
 	manager.Refresh();
 	manager.Update();
@@ -130,11 +165,11 @@ void Game::Update()
 			p->Destroy();
 		}
 	}
+	// set camera position to middle of screen
+	camera.x = player.GetComponent<TransformComponent>().position.x - 32 * 32 / 2;
+	camera.y = player.GetComponent<TransformComponent>().position.y - 32 * 32 / 2;
 
-	camera.x = player.GetComponent<TransformComponent>().position.x - 1024 / 2;
-	camera.y = player.GetComponent<TransformComponent>().position.y - 1024 / 2;
-
-	if (camera.x < 0) 
+	if (camera.x < 0)
 		camera.x = 0;
 	if (camera.y < 0)
 		camera.y = 0;
@@ -168,6 +203,9 @@ void Game::Render()
 	//{
 	//	c->Draw();
 	//}
+
+	//playerPosLabel.Draw();
+	//cameraLabel.Draw();
 
 	SDL_RenderPresent(pRenderer);
 }
