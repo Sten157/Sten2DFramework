@@ -1,4 +1,4 @@
-# StenEngine
+# Sten2DFramework
 SDL2
 
 This code is based off of https://www.youtube.com/@CarlBirch,
