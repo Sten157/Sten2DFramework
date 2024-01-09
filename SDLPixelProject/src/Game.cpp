@@ -166,8 +166,10 @@ void Game::Update()
 		}
 	}
 	// set camera position to middle of screen
-	camera.x = player.GetComponent<TransformComponent>().position.x - 32 * 32 / 2;
-	camera.y = player.GetComponent<TransformComponent>().position.y - 32 * 32 / 2;
+	int h, w;
+	SDL_GetRendererOutputSize(pRenderer, &w, &h);
+	camera.x = playerPos.x - w / 2;
+	camera.y = playerPos.y - h / 2;
 
 	if (camera.x < 0)
 		camera.x = 0;
